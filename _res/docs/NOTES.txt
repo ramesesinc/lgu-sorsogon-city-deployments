@@ -5,9 +5,9 @@ Pass : cpdo2121
 
 
 [DB Server]
-IP   : 192.168.1.2
-User : root
-Pass : P@ssw0rd#
+IP   : 192.168.1.101
+User : sa
+Pass : etr"cs25
 
 
 [Webmin]
