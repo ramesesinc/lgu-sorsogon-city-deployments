@@ -1610,7 +1610,7 @@ select
 	f.utdno,
 	f.prevtdno,
 	f.fullpin as displaypin,
-	case when r.rputype = 'land' then rp.pin else concat(rp.pin, '-', r.suffix) end as pin,
+	case when r.rputype = 'land' then rp.pin else (rp.pin +'-'+ r.suffix) end as pin,
 	f.taxpayer_objid,
 	f.owner_name,
 	f.owner_address,
@@ -4255,7 +4255,7 @@ insert into rptpayment_item(
   priority
 )
 select
-  concat(objid, '-basic') as objid,
+  (objid + '-basic') as objid,
   parentid,
   rptledgerfaasid,
   year,
@@ -4289,7 +4289,7 @@ insert into rptpayment_item(
   priority
 )
 select
-  concat(objid, '-sef') as objid,
+  (objid + '-sef') as objid,
   parentid,
   rptledgerfaasid,
   year,
@@ -4320,7 +4320,7 @@ insert into rptpayment_item(
   priority
 )
 select
-  concat(objid, '-sh') as objid,
+  (objid + '-sh') as objid,
   parentid,
   rptledgerfaasid,
   year,
@@ -4354,7 +4354,7 @@ insert into rptpayment_item(
   priority
 )
 select
-  concat(objid, '-firecode') as objid,
+  (objid + '-firecode') as objid,
   parentid,
   rptledgerfaasid,
   year,
@@ -4387,7 +4387,7 @@ insert into rptpayment_item(
   priority
 )
 select
-  concat(objid, '-basicidle') as objid,
+  (objid + '-basicidle') as objid,
   parentid,
   rptledgerfaasid,
   year,
@@ -4653,7 +4653,7 @@ insert into rptledger_item (
   system
 )
 select 
-  concat(rli.objid, '-basic') as objid,
+  (rli.objid + '-basic') as objid,
   rli.rptledgerid as parentid,
   rli.rptledgerfaasid,
   rli.remarks,
@@ -4694,7 +4694,7 @@ insert into rptledger_item (
   system
 )
 select 
-  concat(rli.objid, '-sef') as objid,
+  (rli.objid + '-sef') as objid,
   rli.rptledgerid as parentid,
   rli.rptledgerfaasid,
   rli.remarks,
@@ -4735,7 +4735,7 @@ insert into rptledger_item (
   system
 )
 select 
-  concat(rli.objid, '-firecode') as objid,
+  (rli.objid + '-firecode') as objid,
   rli.rptledgerid as parentid,
   rli.rptledgerfaasid,
   rli.remarks,
@@ -4775,7 +4775,7 @@ insert into rptledger_item (
   system
 )
 select 
-  concat(rli.objid, '-basicidle') as objid,
+  (rli.objid + '-basicidle') as objid,
   rli.rptledgerid as parentid,
   rli.rptledgerfaasid,
   rli.remarks,
@@ -4814,7 +4814,7 @@ insert into rptledger_item (
   system
 )
 select 
-  concat(rli.objid, '-sh') as objid,
+  (rli.objid + '-sh') as objid,
   rli.rptledgerid as parentid,
   rli.rptledgerfaasid,
   rli.remarks,

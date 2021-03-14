@@ -1418,7 +1418,7 @@ insert into account_incometarget (
 select * 
 from (  
 	select 
-		concat('',a.year,'|',a.objid) as objid, 
+		(''+ convert(char, a.year) + '|'+ a.objid) as objid, 
 		a.objid as itemid, a.year, a.target 
 	from sreaccount_incometarget a 
 	where a.target is not null 
@@ -4645,7 +4645,7 @@ go
 
 
 update a set 
-	a.cashreceiptprintout = concat('cashreceipt-form:', a.itemid) 
+	a.cashreceiptprintout = ('cashreceipt-form:'+ a.itemid) 
 from afunit a, af 
 where af.objid = a.itemid 
 	and af.formtype = 'serial' 
@@ -4758,7 +4758,7 @@ if object_id('dbo.ztmp_collectionvoucher_fund', 'U') IS NOT NULL
   drop table dbo.ztmp_collectionvoucher_fund; 
 go 
 select 
-	lcf.objid, cv.objid as parentid, concat(cv.controlno,'-',fund.code) as controlno, 
+	lcf.objid, cv.objid as parentid, (cv.controlno +'-'+ fund.code) as controlno, 
 	lcf.fund_objid, lcf.fund_title, lcf.amount, 
 	case when lcf.totalcash is null then lcf.amount else lcf.totalcash end as totalcash, 
 	case when lcf.totalnoncash is null then 0.0 else lcf.totalnoncash end as totalcheck, 
