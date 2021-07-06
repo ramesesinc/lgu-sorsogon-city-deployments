@@ -378,7 +378,7 @@ class RPUService
         if (!info.rputype.equalsIgnoreCase(RPUTYPE_LAND)){
             nextsuffix = em.findNextSuffix([realpropertyid:info.realpropertyid, rputype:info.rputype])
             if (!nextsuffix) {
-                nextsuffix = em_rpu_type_suffix.find([rputype:info.rputype]).orderBy('from').first() 
+                def suffix = em_rpu_type_suffix.find([rputype:info.rputype]).orderBy('from').first() 
                 nextsuffix.suffix = suffix.from
                 nextsuffix.subsuffix = info.subsuffix
             }
